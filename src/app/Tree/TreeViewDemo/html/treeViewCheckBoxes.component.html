@@ -1,0 +1,45 @@
+<fieldset>
+    <legend>Check Settings</legend>
+    <div class="k-form-field">
+        <span>Mode</span>
+        <input type="radio" name="checkMode" id="singleCheck" value="single" class="k-radio"
+            [(ngModel)]="checkMode" />
+        <label class="k-radio-label" for="singleCheck">Single</label>
+        <input type="radio" name="checkMode" id="multipleCheck" value="multiple" class="k-radio"
+            [(ngModel)]="checkMode" />
+        <label class="k-radio-label" for="multipleCheck">Multiple</label>
+    </div>
+    <label class="k-form-field">
+        <input
+            type="checkbox"
+            id="checkChildren"
+            class="k-checkbox"
+            [(ngModel)]="checkChildren"
+        />
+        <label class="k-checkbox-label" for="checkChildren">Check all children</label>
+    </label>
+    <label class="k-form-field">
+        <input
+            type="checkbox"
+            id="checkParents"
+            class="k-checkbox"
+            [(ngModel)]="checkParents"
+        />
+        <label class="k-checkbox-label" for="checkParents">Check all parents when children are checked</label>
+    </label>
+</fieldset>
+<br />
+<kendo-treeview
+    [nodes]="data"
+    [children]="children"
+    [hasChildren]="hasChildren"
+    textField="text"
+
+    [kendoTreeViewCheckable]="checkableSettings"
+    [(checkedKeys)]="checkedKeys"
+>
+</kendo-treeview>
+<i>Press SPACE to check/uncheck the active node</i>
+<div class="example-config">
+    Checked keys: {{checkedKeys.join(",")}}
+</div>

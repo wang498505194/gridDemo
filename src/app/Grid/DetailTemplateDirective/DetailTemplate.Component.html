@@ -1,0 +1,19 @@
+<kendo-grid
+[data]="data"
+selectable="true"
+style="height: 500px"
+>
+<kendo-grid-column field="ProductID"></kendo-grid-column>
+<kendo-grid-column field="ProductName"></kendo-grid-column>
+<kendo-grid-column field="UnitPrice"></kendo-grid-column>
+<ng-template kendoGridDetailTemplate let-dataItem [kendoGridDetailTemplateShowIf]="showOnlyBeveragesDetails">
+  <div *ngIf="dataItem.Category">
+    <header>{{dataItem.Category?.CategoryName}}</header>
+    <span>{{dataItem.Category?.Description}}</span>
+    <kendo-grid [data]="dataItem.Category">
+        <kendo-grid-column field="CategoryName"></kendo-grid-column>
+        <kendo-grid-column field="Description"></kendo-grid-column>
+    </kendo-grid>
+  </div>
+</ng-template>
+</kendo-grid>

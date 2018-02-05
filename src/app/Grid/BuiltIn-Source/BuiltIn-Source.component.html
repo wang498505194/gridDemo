@@ -1,0 +1,25 @@
+<div class="declerationClass">
+
+	<h4>表格数据加载：本地类</h4>
+	<ol>
+		<li>数据绑定至内部定义类；</li>
+		<li>展示、过滤、排序均由Kendo UI 自带Grid实现。</li>
+	</ol>
+</div>
+<div class="row">
+
+	<div class="col-sm-7" style="padding:20px">
+		<!-- 此句分栏，总宽度的7/12,共12栏 -->
+		<form novalidate #myForm="ngForm">
+			<kendo-grid [kendoGridBinding]="gridData" [pageSize]="5" [pageable]="true" [sortable]="true" [filterable]="true" [groupable]="true"
+			 [selectable]="{checkboxOnly: false, mode: 'single', enabled: true}" >
+
+				<kendo-grid-column field="id" title="内码" width="100"></kendo-grid-column>
+				<kendo-grid-column field="name" title="姓名" width="100"></kendo-grid-column>
+				<kendo-grid-column field="age" title="年龄" width="100" editor="numeric"></kendo-grid-column>
+				<kendo-grid-column field="married" title="婚否" width="100" editor="boolean"></kendo-grid-column>
+
+			</kendo-grid>
+		</form>
+	</div>
+</div>

@@ -1,0 +1,27 @@
+<!-- <kendo-grid  kendoGridSelectBy [data]="view | async"  -->
+<kendo-grid kendoGridSelectBy [kendoGridBinding]="gridData" (selectionChange)="onSelectChange($event)" (add)="onAdd.emit($event)"
+ [selectable]="{checkboxOnly: false, mode: 'single', enabled: true}">
+
+
+	<!-- <ng-template kendoGridToolbarTemplate>
+		<button kendoGridAddCommand>新增</button>
+		<button (click)="onDel.emit()" class="k-button">删除</button>
+		<button (click)="onSaveAll.emit()" class="k-button">全部保存</button>
+		<button (click)="onCancelAll.emit()" class="k-button">全部撤消</button>
+	</ng-template> -->
+	<!-- <kendo-grid-checkbox-column showSelectAll="true" width="50"></kendo-grid-checkbox-column> -->
+	<kendo-grid-column field="id" title="内码" width="50"></kendo-grid-column>
+	<kendo-grid-column field="name" title="姓名" width="100"></kendo-grid-column>
+	<kendo-grid-column field="age" title="年龄" width="100"></kendo-grid-column>
+	<kendo-grid-column field="married" title="是否已婚" width="100"></kendo-grid-column>
+
+	<!-- <kendo-grid-command-column title="操作" width="80">
+		<ng-template kendoGridCellTemplate let-isNew="isNew"> -->
+	<!-- <button kendoGridEditCommand class="k-primary">编辑</button> -->
+	<!-- <button kendoGridRemoveCommand>删除</button> -->
+	<!-- <button kendoGridSaveCommand>更新</button>
+	  <button kendoGridCancelCommand>撤销 </button> -->
+	<!-- </ng-template>
+	</kendo-grid-command-column> -->
+
+</kendo-grid>

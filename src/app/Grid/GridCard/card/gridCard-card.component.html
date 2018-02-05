@@ -1,0 +1,30 @@
+<form [formGroup]="userform" class="k-form">
+	<label class="k-form-field">
+		<span>编号
+			<span class="k-required">*</span>
+		</span>
+		<input class="k-textbox" formControlName="Code" [(ngModel)]="dataItem.id" />
+	</label>
+	<label class="k-form-field">
+		<span>姓名
+			<span class="k-required">*</span>
+		</span>
+		<input class="k-textbox" formControlName="Name" [(ngModel)]="dataItem.name" />
+	</label>
+	<label class="k-form-field">
+			<span>年龄
+				<span class="k-required">*</span>
+			</span>
+			<input formControlName="Age" [(ngModel)]="dataItem.age"/>
+		</label>
+	<label class="k-form-field">
+		<span>是否已婚
+			<span class="k-required">*</span>
+		</span>
+		<kendo-switch formControlName="IsMarried" [(ngModel)]="dataItem.married"></kendo-switch>
+	</label>
+	<p>
+		<button kendoButton [primary]="true" (click)="onSave.emit()" >保存</button>
+		<button kendoButton [primary]="false"  (click)="onCancel.emit()">取消</button>
+	</p>
+</form>

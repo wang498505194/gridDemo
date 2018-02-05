@@ -1,0 +1,17 @@
+<div class="example-config" class="declerationClass">
+    <p>Expanded keys: {{expandedKeys.join(",")}}</p>
+    <p>Disabled keys: {{disabledKeys.join(",")}}</p>
+</div>
+<kendo-treeview 
+    [nodes]="treeNodes" 
+    textField="desc" 
+    kendoTreeViewExpandable 
+    kendoTreeViewFlatDataBinding 
+    idField="id" 
+    parentIdField="parentId"
+    [(expandedKeys)]="expandedKeys"
+    
+    [kendoTreeViewDisable]="'desc'"
+    [(disabledKeys)]="disabledKeys"
+    >
+</kendo-treeview>

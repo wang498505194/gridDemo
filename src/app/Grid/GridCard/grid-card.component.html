@@ -1,0 +1,9 @@
+<div class="row">
+    <div class="col-sm-7">
+		<p>第一列-7列宽度</p>
+		<gridcard-grid [gridData]="view" (onSelect) = "selectItem($event)"   ></gridcard-grid>
+	</div>
+	<div class="col-sm-5">
+		<gridcard-card [dataItem]="currentItem || {}" (onSave)="saveItem($event)" (onCancel)="cancelItem()"></gridcard-card>
+	</div>
+</div>
