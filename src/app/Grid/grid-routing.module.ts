@@ -7,6 +7,7 @@ import { ExternalEditComponent } from './External-Edit/external-edit.component';
 import { GridCardComponent } from './GridCard/grid-card.component';
 import { DetailTemplateComponent } from './DetailTemplateDirective/DetailTemplate.Component';
 import { GridDemoComponent } from './grid.component';
+import { BuiltInEditComponent } from './built-in-edit/built-in-edit.component';
 
 
 const routes: Routes = [
@@ -16,11 +17,14 @@ const routes: Routes = [
     children: [
       { path: '', redirectTo: 'InCell_Edit', pathMatch: 'full' },
       { path: 'InCell_Edit', component: InCellEditComponent },
+      { path: 'BuiltIn_Edit', component: BuiltInEditComponent },
       { path: 'BuitIn_Source', component: BuiltInSourceComponent },
       { path: 'HttpClient_Source', component: HttpClientSourceComponent },
       { path: 'External_Edit', component: ExternalEditComponent },
       { path: 'Grid_Card', component: GridCardComponent },
       { path: 'Detail_Template', component: DetailTemplateComponent },
+      
+      
     ]
   }
   

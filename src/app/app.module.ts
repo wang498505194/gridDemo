@@ -18,12 +18,16 @@ import { LayoutModule } from '@progress/kendo-angular-layout';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { LayoutDemoModule } from './LayOut/layout-demo.module';
+import { DoDesignerComponent } from './do-designer/do-designer.component';
+import { DropDownComponent } from './drop-down/drop-down.component';
 
 
 
 @NgModule({
     declarations: [
         AppComponent,
+        DoDesignerComponent,
+        DropDownComponent,
         
     ],
     imports: [
@@ -47,8 +51,6 @@ import { LayoutDemoModule } from './LayOut/layout-demo.module';
         ButtonModule,
         DropDownsModule,
         LayoutModule,
-
-        // LayoutDemoModule
     ],
     bootstrap: [AppComponent]
 })

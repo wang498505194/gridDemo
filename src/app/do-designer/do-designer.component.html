@@ -1,0 +1,73 @@
+<div class="declerationClass">
+
+    <h4>DODesigner_行内置编辑器</h4>
+    <ol>
+        <li>暂定仍有右侧属性栏；</li>
+        <li>DO Column编辑；</li>
+        <li>工具栏，新增行，删除行；</li>
+    </ol>
+</div>
+
+<form novalidate #myForm="ngForm">
+  <kendo-grid
+      [kendoGridTemplateEditing]="createNewColumn"
+      [kendoGridBinding]="columns"
+      [height]="500"
+      [pageSize]="10"
+      [pageable]="true"
+      [sortable]="true"
+      [navigable]="true"
+    >
+    <ng-template kendoGridToolbarTemplate>
+        <button kendoGridAddCommand type="button">新增行</button>
+        <button kendoGridRemoveCommand type="button">删除行</button>
+    </ng-template>
+    <kendo-grid-column field="Code" title="编号">
+        <ng-template kendoGridEditTemplate let-dataItem="dataItem">
+            <input [(ngModel)]="dataItem.Code" kendoGridFocusable name="Code" class="k-textbox" required/>
+        </ng-template>
+    </kendo-grid-column>
+    <kendo-grid-column field="Name" title="名称">
+        <ng-template kendoGridEditTemplate let-dataItem="dataItem">
+            <input [(ngModel)]="dataItem.Name" kendoGridFocusable name="Name" class="k-textbox" required/>
+        </ng-template>
+    </kendo-grid-column>
+    <kendo-grid-column field="IsPrimaryKey" editor="boolean" title="是否主键">
+        <ng-template kendoGridEditTemplate let-dataItem="dataItem">
+            <input [(ngModel)]="dataItem.IsPrimaryKey" kendoGridFocusable name="IsPrimaryKey" type="checkbox" required/>
+        </ng-template>
+    </kendo-grid-column>
+    <kendo-grid-column field="IsPrimaryKey" editor="boolean" title="基本类型">
+        <ng-template kendoGridEditTemplate let-dataItem="dataItem">
+            <input [(ngModel)]="dataItem.IsPrimaryKey" kendoGridFocusable name="IsPrimaryKey" type="checkbox" required/>
+        </ng-template>
+    </kendo-grid-column>
+    <kendo-grid-column field="Discontinued" editor="boolean" title="Discontinued">
+        <ng-template kendoGridEditTemplate let-dataItem="dataItem">
+            <input [(ngModel)]="dataItem.Discontinued" kendoGridFocusable name="Discontinued" type="checkbox"/>
+        </ng-template>
+    </kendo-grid-column>
+    <kendo-grid-column field="UnitsInStock" editor="numeric" title="Units In Stock">
+        <ng-template kendoGridEditTemplate let-dataItem="dataItem">
+            <input
+                [(ngModel)]="dataItem.UnitsInStock"
+                kendoGridFocusable
+                name="UnitsInStock"
+                required
+                min="0"
+                max="99"
+                class="k-textbox"
+                type="number"/>
+        </ng-template>
+    </kendo-grid-column>
+    <kendo-grid-command-column title="command" width="220">
+        <ng-template kendoGridCellTemplate let-isNew="isNew">
+            <button kendoGridEditCommand type="button" class="k-primary">编辑</button>
+            <button kendoGridRemoveCommand type="button">删除</button>
+            <button kendoGridSaveCommand type="button" [disabled]="myForm.invalid">{{ isNew ? '新增' : '更新' }}</button>
+            <button kendoGridCancelCommand type="button">{{ isNew ? '撤销新增' : '取消' }}</button>
+        </ng-template>
+    </kendo-grid-command-column>
+  </kendo-grid>
+</form>
+

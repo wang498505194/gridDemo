@@ -1,0 +1,48 @@
+<div class="example-wrapper" style="min-height: 400px;">
+  <div class="col-xs-12 col-sm-6 example-col">
+    <h2>AutoComplete</h2>
+    <kendo-autocomplete [data]="listItems" [placeholder]="'Your favorite sport'">
+    </kendo-autocomplete>
+  </div>
+
+  <div class="col-xs-12 col-sm-6 example-col">
+    <h2>ComboBox</h2>
+    <kendo-combobox [data]="listItems" [value]="'Basketball'">
+    </kendo-combobox>
+  </div>
+
+  <div class="col-xs-12 col-sm-6 example-col">
+    <h2>DropDownList</h2>
+    <p>普通</p>
+    <kendo-dropdownlist [data]="listItems" [value]="'Basketball'">
+    </kendo-dropdownlist>
+  
+      <p>头尾value、text</p>
+    <kendo-dropdownlist [data]="listItems2" [textField]="'text'" [valueField]="'value'" [value]="selectedValue">
+      <ng-template kendoDropDownListHeaderTemplate>
+        <h4>头：T-shirt sizes</h4>
+      </ng-template>
+      <ng-template kendoDropDownListFooterTemplate>
+        <h4>尾：{{listItems2.length}} sizes available</h4>
+      </ng-template>
+      <ng-template kendoDropDownListValueTemplate let-dataItem>
+        <span class="template">{{ dataItem?.value }}</span>&nbsp;{{ dataItem?.text }}
+      </ng-template>
+    </kendo-dropdownlist>
+    <p>空</p>
+    <kendo-dropdownlist [data]="">
+      <ng-template kendoDropDownListNoDataTemplate>
+        <h4>
+          <span class="k-icon k-i-warning"></span>
+          <br />
+          <br /> No data here</h4>
+      </ng-template>
+    </kendo-dropdownlist>
+
+  </div>
+
+  <div class="col-xs-12 col-sm-6 example-col">
+    <h2>MultiSelect</h2>
+    <kendo-multiselect [data]="listItems" [value]="value" [placeholder]="'Your favorite sports'"></kendo-multiselect>
+  </div>
+</div>

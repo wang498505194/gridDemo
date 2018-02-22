@@ -1,0 +1,160 @@
+{
+    "DataObject": {
+        "ID": "9147a5bc-6509-489f-abe4-233c416c5d12",
+        "Code": "DOUnitTest",
+        "Name": "测试用数据对象",
+        "DbTableName": "DOUnitTest",
+        "Comment": "这是测试用DO。",
+        "UpdateModifiedColumn": "True",
+        "DataObjectType": "Table",
+        "BizObject": "临时业务对象",
+        "Columns": {
+            "Column": [
+                {
+                    "ID": "f625fddd-bdbf-464e-9e4a-2f07bc1dde8b",
+                    "Code": "XMXMINFO_XMNM",
+                    "Name": "项目内码",
+                    "IsPrimaryKey": "True",
+                    "DataType": "varchar",
+                    "Length": "36",
+                    "Precision": "0"
+                },
+                {
+                    "Code": "XMXMINFO_XMBH",
+                    "DataType": "varchar",
+                    "ID": "7e7e440c-7ce5-4dba-8282-ed1c428c1d00",
+                    "IsPrimaryKey": "False",
+                    "Length": "30",
+                    "Name": "项目编号",
+                    "Precision": "0"
+                },
+                {
+                    "Code": "XMXMINFO_XMMC",
+                    "DataType": "varchar",
+                    "ID": "d43e86b3-5423-4176-a1f6-2206ee3edd43",
+                    "IsPrimaryKey": "False",
+                    "Length": "256",
+                    "Name": "项目名称",
+                    "Precision": "0"
+                },
+                {
+                    "Code": "XMXMINFO_XMLB",
+                    "DataType": "varchar",
+                    "ID": "2a5858bb-ed6c-4503-bb56-464ef7a1cae1",
+                    "IsPrimaryKey": "False",
+                    "Length": "36",
+                    "Name": "项目类别",
+                    "Precision": "0"
+                },
+                {
+                    "Code": "XMXMINFO_DQJD",
+                    "DataType": "varchar",
+                    "ID": "3e8b8137-95ae-4d21-9ee4-b93848dcc46c",
+                    "IsPrimaryKey": "False",
+                    "Length": "36",
+                    "Name": "当前阶段",
+                    "Precision": "0"
+                },
+                {
+                    "Code": "XMXMINFO_SSBM",
+                    "DataType": "varchar",
+                    "ID": "ded6ce3c-c4ac-4c49-9856-eacfae5b3c34",
+                    "IsPrimaryKey": "False",
+                    "Length": "36",
+                    "Name": "所属部门",
+                    "Precision": "0"
+                },
+                {
+                    "Code": "XMXMINFO_PMBH",
+                    "DataType": "varchar",
+                    "ID": "d5fc8f32-e04e-4e47-a258-961946dd2f9a",
+                    "IsPrimaryKey": "False",
+                    "Length": "36",
+                    "Name": "项目经理",
+                    "Precision": "0"
+                },
+                {
+                    "Code": "XMXMINFO_SM",
+                    "DataType": "varchar",
+                    "ID": "db6cd1f2-91d9-49d0-bc34-4604a6c928f2",
+                    "IsPrimaryKey": "False",
+                    "Length": "36",
+                    "Name": "软件经理",
+                    "Precision": "0"
+                },
+                {
+                    "Code": "XMXMINFO_XMZT",
+                    "DataType": "char",
+                    "ID": "e57dc74b-b62f-4dd2-90ca-75aa99fb9612",
+                    "IsPrimaryKey": "False",
+                    "Length": "1",
+                    "Name": "启用标记",
+                    "Precision": "0"
+                },
+                {
+                    "Code": "XMXMINFO_ISLX",
+                    "DataType": "char",
+                    "ID": "6bb0e3c1-e236-4b0c-b343-84ab3d19e082",
+                    "IsPrimaryKey": "False",
+                    "Length": "1",
+                    "Name": "是否立项",
+                    "Precision": "0"
+                },
+                {
+                    "Code": "XMXMINFO_QYID",
+                    "DataType": "varchar",
+                    "ID": "da8d000e-b907-4006-9fab-5aea0d8d4bb8",
+                    "IsPrimaryKey": "False",
+                    "Length": "36",
+                    "Name": "所属区域",
+                    "Precision": "0"
+                },
+                {
+                    "Code": "XMXMINFO_NOTE",
+                    "DataType": "varchar",
+                    "ID": "e5a940d7-e208-44a5-a227-604c4aa5ff83",
+                    "IsPrimaryKey": "False",
+                    "Length": "1024",
+                    "Name": "备注",
+                    "Precision": "0"
+                },
+                {
+                    "Code": "Creator",
+                    "DataType": "varchar",
+                    "ID": "890e1030-4eab-42ed-a7ed-a9079b183eef",
+                    "IsPrimaryKey": "False",
+                    "Length": "128",
+                    "Name": "创建人",
+                    "Precision": "0"
+                },
+                {
+                    "Code": "CreatedDate",
+                    "DataType": "datetime",
+                    "ID": "d5d518f8-20af-4b15-9a31-baa6ca0ef60f",
+                    "IsPrimaryKey": "False",
+                    "Length": "0",
+                    "Name": "创建时间",
+                    "Precision": "0"
+                },
+                {
+                    "Code": "LastModifier",
+                    "DataType": "varchar",
+                    "ID": "2191b7c4-26b2-4549-a2e1-0d335e459e8d",
+                    "IsPrimaryKey": "False",
+                    "Length": "128",
+                    "Name": "最后修改人",
+                    "Precision": "0"
+                },
+                {
+                    "Code": "LastModifiedDate",
+                    "DataType": "datetime",
+                    "ID": "8104675b-9717-41a2-b683-211d10255793",
+                    "IsPrimaryKey": "False",
+                    "Length": "0",
+                    "Name": "最后修改时间",
+                    "Precision": "0"
+                }
+            ]
+        }
+    }
+}

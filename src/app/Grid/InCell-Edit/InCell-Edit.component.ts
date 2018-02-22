@@ -1,13 +1,17 @@
 import { Observable } from 'rxjs/Rx';
 import { Subject } from 'rxjs/Subject';
 import { Component, OnInit, Inject } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 
 import { GridDataResult } from '@progress/kendo-angular-grid';
 import { State, process } from '@progress/kendo-data-query';
 
 import { Product } from './model';
 import { InCellEditService } from './InCell-Edit.edit.service';
+import { EditService } from '../edit.service';
+import { map } from 'rxjs/operators';
+import { CommonModule } from '@angular/common';
+
 
 const dataItem_wjjOnly="这是wjj家dog";
 
@@ -16,27 +20,27 @@ const dataItem_wjjOnly="这是wjj家dog";
   templateUrl:'./InCell-Edit.component.html',
 })
 export class InCellEditComponent implements OnInit {
-    removeConfirmationSubject:  Subject<boolean> = new Subject<boolean>();
-    itemToRemove: any;
+
     public view: Observable<GridDataResult>;
     public gridState: State = {
         sort: [],
         skip: 0,
-        take: 10
+        take: 10,
     };
 
-    private editService: InCellEditService;
+    public changes: any = {};
+
+    // private editService: InCellEditService;
     private editedRowIndex: number;
     private editedProduct: Product;
 
-    constructor(@Inject(InCellEditService) editServiceFactory: any) {
-        this.editService = editServiceFactory();
-        this.removeConfirmation = this.removeConfirmation.bind(this);
+    constructor(private formBuilder: FormBuilder, public editService: InCellEditService) {
     }
 
     public ngOnInit(): void {
-        this.view = this.editService.map(data => process(data, this.gridState));
-
+         this.view = this.editService.pipe(map(data => process(data, this.gridState)));
+        
+        //this.view = this.editService.map(data => process(data, this.gridState));
         this.editService.read();
     }
 
@@ -46,60 +50,66 @@ export class InCellEditComponent implements OnInit {
         this.editService.read();
     }
 
-    public addHandler({sender}) {
-        // this.closeEditor(sender);
-
-        // sender.addRow(new Product());
+    public cellClickHandler({ sender, rowIndex, columnIndex, dataItem, isEdited }) {
+        if (!isEdited) {
+            sender.editCell(rowIndex, columnIndex, this.createFormGroup(dataItem));
+        }
     }
 
-    public editHandler({sender, columnIndex,rowIndex, dataItem,column,isNew}) {
-        this.closeEditor(sender);
-        this.editedRowIndex = rowIndex;
-        this.editedProduct = Object.assign({}, dataItem);
+    public cellCloseHandler(args: any) {
+        const { formGroup, dataItem } = args;
 
-        sender.editRow(rowIndex);
-        //以下用来测试CommandColumnComponent
-        console.log("\n行列索引： ",rowIndex,columnIndex);
-        console.log("\n行列数据： ",dataItem,column);
-        console.log("\nisNew： ",isNew);
+        if (!formGroup.valid) {
+             // prevent closing the edited cell if there are invalid values.
+            args.preventDefault();
+        } else if (formGroup.dirty) {
+            this.editService.assignValues(dataItem, formGroup.value);
+            this.editService.update(dataItem);
+        }
     }
 
-    public cancelHandler({sender, rowIndex}) {
-        this.closeEditor(sender, rowIndex);
+    
+    public addHandler({ sender }) {
+        sender.addRow(this.createFormGroup(new Product()));
     }
 
-    public saveHandler({sender, rowIndex, dataItem, isNew}) {
-        this.editService.save(dataItem, isNew);
-
+    public cancelHandler({ sender, rowIndex }) {
         sender.closeRow(rowIndex);
-
-        this.editedRowIndex = undefined;
-        this.editedProduct = undefined;
     }
 
-    public removeHandler({dataItem}) {
+    public saveHandler({ sender, formGroup, rowIndex }) {
+        if (formGroup.valid) {
+            this.editService.create(formGroup.value);
+            sender.closeRow(rowIndex);
+        }
+    }
+
+    public removeHandler({ sender, dataItem }) {
         this.editService.remove(dataItem);
+
+        sender.cancelCell();
     }
 
-    private closeEditor(grid, rowIndex = this.editedRowIndex) {
-        grid.closeRow(rowIndex);
-        this.editService.resetItem(this.editedProduct);
-        this.editedRowIndex = undefined;
-        this.editedProduct = undefined;
+    public saveChanges(grid: any): void {
+        grid.closeCell();
+        grid.cancelCell();
+
+        this.editService.saveChanges();
     }
 
-    private CustomClick()
-    {
-        console.log("自定义按钮被点击了！");
-    }
-    public confirmRemove(shouldRemove: boolean): void {
-        this.removeConfirmationSubject.next(shouldRemove);
+    public cancelChanges(grid: any): void {
+        grid.cancelCell();
 
-        this.itemToRemove = null;
+        this.editService.cancelChanges();
     }
-    public removeConfirmation(dataItem): Subject<boolean> {
-        this.itemToRemove = dataItem;
 
-        return this.removeConfirmationSubject;
+    public createFormGroup(dataItem: any): FormGroup {
+        return this.formBuilder.group({
+            'ProductID': dataItem.ProductID,
+            'ProductName': [dataItem.ProductName, Validators.required],
+            'UnitPrice': dataItem.UnitPrice,
+            'UnitsInStock': [dataItem.UnitsInStock, Validators.compose([Validators.required, Validators.pattern('^[0-9]{1,3}')])],
+            'Discontinued': dataItem.Discontinued
+        });
     }
 }

@@ -1,69 +1,40 @@
 <div class="declerationClass">
 
-    <h4>编辑：内置编辑器</h4>
+    <h4>编辑：单元格内置编辑器</h4>
     <ol>
         <li>添加单元格编辑器： ng-template, input,添加kendoGridEditTemplate,通过class="k-textbox",结合type="checkbox"/"number";</li>
         <li>数据绑定，[(ngModel)]输入输出;</li>
     </ol>
 </div>
 
-<form novalidate #myForm="ngForm">
-    <kendo-grid [data]="view | async"  
-    [scrollable]="scrollable" 
-    style="height:500px"
-     [pageSize]="gridState.take" [skip]="gridState.skip" [sort]="gridState.sort"
-        [pageable]="true" [sortable]="true" (dataStateChange)="onStateChange($event)" (edit)="editHandler($event)" (cancel)="cancelHandler($event)"
-        (save)="saveHandler($event)" (remove)="removeHandler($event)" (add)="addHandler($event)" navigable="false"  
-        kendoGridTemplateEditing [removeConfirmation]="removeConfirmation" 
-        >
-        <ng-template kendoGridToolbarTemplate>
-            <button kendoGridAddCommand togglable="true"  type="button" >Add new</button>
-            <button kendoGridAddCommand type="button" >Add new</button>
-        </ng-template>
-        <kendo-grid-column width="200px" field="ProductName">
-                <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex" let-columnIndex="columnIndex">
-                    Row: {{rowIndex}} Column:{{columnIndex}}/
-                    <strong>{{dataItem.ProductName}}</strong>
-                    ({{dataItem.Discontinued ? "discontinued" : "active"}})
-                </ng-template>
-            </kendo-grid-column>
-        <kendo-grid-column width="200px" field="ProductName" title="Product Name"  [locked]="true" [reorderable]="false">
-            <ng-template kendoGridEditTemplate let-dataItem="dataItem">
-                <input [(ngModel)]="dataItem.ProductName" kendoGridFocusable name="ProductName" class="k-textbox" required/> 
-            </ng-template>
-        </kendo-grid-column>
-        <kendo-grid-column width="200px" field="UnitPrice" editor="numeric" title="Price">
-            <ng-template kendoGridEditTemplate let-dataItem="dataItem">
-                <input [(ngModel)]="dataItem.UnitPrice" kendoGridFocusable name="UnitPrice" class="k-textbox" type="number" />
-            </ng-template>
-        </kendo-grid-column>
-        <kendo-grid-column width="200px" field="Discontinued" editor="boolean" title="Discontinued">
-            <ng-template kendoGridEditTemplate let-dataItem="dataItem">
-                <input [(ngModel)]="dataItem.Discontinued" kendoGridFocusable name="Discontinued" type="checkbox" />
-            </ng-template>
-        </kendo-grid-column>
-        <kendo-grid-column width="200px" field="UnitsInStock" editor="numeric" title="Units In Stock">
-            <ng-template kendoGridEditTemplate let-dataItem="dataItem">
-                <input [(ngModel)]="dataItem.UnitsInStock" kendoGridFocusable name="UnitsInStock" required min="0" max="99" class="k-textbox"
-                    type="number" />
-            </ng-template>
-        </kendo-grid-column>
-        <kendo-grid-command-column width="200px" title="command" width="220">
-            <ng-template kendoGridCellTemplate let-isNew="isNew">
-                <button kendoGridEditCommand type="button" class="k-primary">Edit</button>
-                <button kendoGridRemoveCommand type="button">Remove</button>
-                <button kendoGridSaveCommand type="button" [disabled]="myForm.invalid">{{ isNew ? 'Add' : 'Update' }}</button>
-                <button kendoGridCancelCommand type="button">{{ isNew ? 'Discard changes' : 'Cancel' }}</button>
-                <button type="button" (click)=CustomClick()>自定义按钮</button>
-            </ng-template>
-        </kendo-grid-command-column>
-
-    </kendo-grid>
-    <kendo-dialog title="Please confirm" *ngIf="itemToRemove" (close)="confirmRemove(false)">
-            <p style="margin: 30px; text-align: center;">Are you sure you want to delete product {{ itemToRemove.ProductName }}?</p>
-            <kendo-dialog-actions>
-                <button class='k-button' (click)="confirmRemove(false)">No</button>
-                <button class='k-button k-primary' (click)="confirmRemove(true)" primary="true">Yes</button>
-            </kendo-dialog-actions>
-        </kendo-dialog>
-</form>
+<kendo-grid #grid
+[data]="view | async"
+[height]="533"
+[pageSize]="gridState.take" [skip]="gridState.skip" [sort]="gridState.sort"
+[pageable]="true" [sortable]="true"
+(dataStateChange)="onStateChange($event)"
+(cellClick)="cellClickHandler($event)"
+(cellClose)="cellCloseHandler($event)"
+(cancel)="cancelHandler($event)"
+(save)="saveHandler($event)"
+(remove)="removeHandler($event)"
+(add)="addHandler($event)"
+[navigable]="true"
+>
+<ng-template kendoGridToolbarTemplate>
+  <button kendoGridAddCommand>Add new</button>
+  <button class='k-button' [disabled]="!editService.hasChanges()" (click)="saveChanges(grid);">Save Changes</button>
+  <button class='k-button' [disabled]="!editService.hasChanges()" (click)="cancelChanges(grid);">Cancel Changes</button>
+</ng-template>
+<kendo-grid-column field="ProductName" title="Product Name"><ng-template><p>显示测试</p></ng-template></kendo-grid-column>
+<kendo-grid-column field="UnitPrice" editor="numeric" title="Price"></kendo-grid-column>
+<kendo-grid-column field="Discontinued" editor="boolean" title="Discontinued"></kendo-grid-column>
+<kendo-grid-column field="UnitsInStock" editor="numeric" title="Units In Stock"></kendo-grid-column>
+<kendo-grid-command-column title="command" width="220">
+  <ng-template kendoGridCellTemplate let-isNew="isNew">
+      <button kendoGridRemoveCommand>Remove</button>
+      <button kendoGridSaveCommand>Add</button>
+      <button kendoGridCancelCommand>Cancel</button>
+  </ng-template>
+</kendo-grid-command-column>
+</kendo-grid>

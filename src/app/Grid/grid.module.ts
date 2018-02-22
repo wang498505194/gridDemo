@@ -29,6 +29,7 @@ import { DetailTemplateComponent } from './DetailTemplateDirective/DetailTemplat
 import { GridRoutingModule } from './grid-routing.module';
 import { GridDemoComponent } from './grid.component';
 import { CommonModule } from '@angular/common';
+import { BuiltInEditComponent } from './built-in-edit/built-in-edit.component';
 
 
 
@@ -43,7 +44,8 @@ import { CommonModule } from '@angular/common';
         GridCardComponent,
         GridCardCardComponent,
         GridCardGridComponent,
-        DetailTemplateComponent
+        DetailTemplateComponent,
+        BuiltInEditComponent
     ],
     imports: [
         CommonModule,
@@ -70,17 +72,18 @@ import { CommonModule } from '@angular/common';
             provide: ExternalEditService,
             useFactory: (jsonp: HttpClient) => () => new ExternalEditService(jsonp)
         },
-        {
-            deps: [HttpClient],
-            provide: InCellEditService,
-            useFactory: (jsonp: HttpClient) => () => new InCellEditService(jsonp)
-        },
+        // {
+        //     deps: [HttpClient],
+        //     provide: InCellEditService,
+        //     useFactory: (jsonp: HttpClient) => () => new InCellEditService(jsonp)
+        // },
         {
             deps: [HttpClient],
             provide: HttpClientSourceService,
             useFactory: (jsonp: HttpClient) => () => new HttpClientSourceService(jsonp)
         },
         GridCardService,
+        InCellEditService
     ],
     // bootstrap: [AppComponent]
 })
