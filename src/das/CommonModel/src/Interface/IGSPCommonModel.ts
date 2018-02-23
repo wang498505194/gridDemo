@@ -1,6 +1,5 @@
-import { IGSPCommonModel } from "./Interface/IGSPCommonModel";
-import { RelationForeignKeyConstraint } from "./Constraints/RelationForeignKeyConstraint";
-import { IGSPCommonObject } from "./Interface/IGSPCommonObject";
+import { IGSPCommonObject } from "./IGSPCommonObject";
+import { RelationForeignKeyConstraint } from "../Constraints/RelationForeignKeyConstraint";
 
 /**
  * 通用模型，作为业务实体，视图模型和数据模型的总接口，用于规划实体数据结构
@@ -11,7 +10,7 @@ import { IGSPCommonObject } from "./Interface/IGSPCommonObject";
 /**
  * 通用模型，作为业务实体，视图模型和数据模型的总接口，用于规划实体数据结构
  */
-export class GSPCommonModel implements IGSPCommonModel {
+export interface IGSPCommonModel {
 
     /**
      * 唯一标志

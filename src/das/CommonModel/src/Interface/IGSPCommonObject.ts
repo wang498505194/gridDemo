@@ -1,15 +1,13 @@
-import { IGSPCommonObject } from "./Interface/IGSPCommonObject";
-import { GSPElementDataType } from "./Element/GSPElementDataType";
-import { ElementCodeRuleConfig } from "./Element/ElementCodeRuleConfig";
-import { ElementDefaultVauleType } from "./Element/ElementDefaultVauleType";
-import { GSPCommonObjectType } from "./Object/GSPCommonObjectType";
-import { GSPColumnGenerate } from "./Object/GSPColumnGenerate";
-import { IGSPCommonElement } from "./Interface/IGSPCommonElement";
-import { GSPUniqueConstraint } from "./Object/GSPUniqueConstraint";
-import { IGSPCommonModel } from "./Interface/IGSPCommonModel";
-import { GSPHirarchyInfo } from "./Object/GSPHirarchyInfo";
-import { GSPAssociationKey } from "./Element/GSPAssociationKey";
-
+import { IGSPCommonElement } from "./IGSPCommonElement";
+import { GSPElementDataType } from "../Element/GSPElementDataType";
+import { ElementCodeRuleConfig } from "../Element/ElementCodeRuleConfig";
+import { ElementDefaultVauleType } from "../Element/ElementDefaultVauleType";
+import { GSPCommonObjectType } from "../Object/GSPCommonObjectType";
+import { GSPColumnGenerate } from "../Object/GSPColumnGenerate";
+import { GSPUniqueConstraint } from "../Object/GSPUniqueConstraint";
+import { GSPHirarchyInfo } from "../Object/GSPHirarchyInfo";
+import { GSPAssociationKey } from "../Element/GSPAssociationKey";
+import { IGSPCommonModel } from "./IGSPCommonModel";
 
 
 /**
@@ -21,7 +19,7 @@ import { GSPAssociationKey } from "./Element/GSPAssociationKey";
 /**
  * 节点元数据
  */
-export class GSPCommonObject implements IGSPCommonObject {
+export interface IGSPCommonObject {
 
     /**
      * 唯一标志
