@@ -1,6 +1,7 @@
 import { BEOperationType } from "../Enum/BEOperationType";
 import { BizOperation } from "./BizOperation";
 import { RequestNodeTriggerType } from "../Enum/RequestNodeTriggerType";
+import { BEValidationType } from "../Enum/BEValidationType";
 
 
 /**
