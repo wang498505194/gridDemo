@@ -63,21 +63,9 @@ export class GSPDataTable {
     public IsSystem: boolean;
 
     /**
-     * 是否初始化
-     */
-    public IsInit: boolean;
-
-    /**
      * 是否已经创建了数据库映射表
      */
     public IsCreated: boolean;
-
-    /**
-     * 数据对象实表策略类型(相较于枚举，保留扩展能力)
-     * Normal-普通表
-     * Fiscal-年度表
-     */
-    public Policy: string[];
 
     /**
      * 主键集合
@@ -85,21 +73,9 @@ export class GSPDataTable {
     public PrimaryKeys: string[];
 
     /**
-     * 数据源连接列表
-     */
-    public DataSourceConnectList: string[];
-
-    /**
      * 列集合
      */
     public Columns: Column[];
-
-    /**
-     * 当前数据源连接是否是自定义的
-     * DefaultConn表示默认的数据源连接
-     * UserDefConn表示自定义数据源
-     */
-    public DataSourceConnectionType: DataSourceConnectionType;
 
     /**
      * 是否同步数据类型

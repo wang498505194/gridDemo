@@ -64,11 +64,6 @@ class Column {
     public IsNull: boolean;
 
     /**
-     * 是否必须唯一
-     */
-    public IsUnique: boolean;
-
-    /**
      * 是否是必须值
      */
     public IsMust: boolean;
@@ -79,14 +74,9 @@ class Column {
     public IsMultilingual: boolean;
 
     /**
-     * 所在数据对象
+     * 所在数据对象(允许为空)
      */
-    public DataTable: GSPDataTable;
-
-    /**
-     * 返回当前字段是否系统维护
-     */
-    public IsSystem: boolean;
+    public DataTable?: GSPDataTable;
 
     /**
      * 默认值

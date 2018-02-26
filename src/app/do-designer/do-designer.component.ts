@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Columns } from '../../assets/DOTest';
-import { Column } from '../../Das/DataObject/index';
 
 @Component({
   selector: 'app-do-designer',
@@ -14,8 +13,4 @@ export class DoDesignerComponent implements OnInit {
 
   ngOnInit() {
   }
-
-  createNewColumn(): Column {
-    return new Column();
-}
 }

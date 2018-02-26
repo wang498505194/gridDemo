@@ -20,6 +20,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { LayoutDemoModule } from './LayOut/layout-demo.module';
 import { DoDesignerComponent } from './do-designer/do-designer.component';
 import { DropDownComponent } from './drop-down/drop-down.component';
+import { DasSampleComponent } from './das-sample/das-sample.component';
 
 
 
@@ -28,6 +29,7 @@ import { DropDownComponent } from './drop-down/drop-down.component';
         AppComponent,
         DoDesignerComponent,
         DropDownComponent,
+        DasSampleComponent,
         
     ],
     imports: [
