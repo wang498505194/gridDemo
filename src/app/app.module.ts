@@ -18,19 +18,20 @@ import { LayoutModule } from '@progress/kendo-angular-layout';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { LayoutDemoModule } from './LayOut/layout-demo.module';
-import { DoDesignerComponent } from './do-designer/do-designer.component';
 import { DropDownComponent } from './drop-down/drop-down.component';
 import { DasSampleComponent } from './das-sample/das-sample.component';
+// import { BeDesignerModule } from './be-designer/be-designer.module';
+import { BEGridComponent } from './be-designer/be-designer-grid/be-designer-grid.component';
+import { begridEditService } from './be-designer/be-designer-grid/be-designer-grid.edit.service';
 
 
 
 @NgModule({
     declarations: [
         AppComponent,
-        DoDesignerComponent,
         DropDownComponent,
         DasSampleComponent,
-        
+        BEGridComponent,
     ],
     imports: [
         
@@ -53,7 +54,11 @@ import { DasSampleComponent } from './das-sample/das-sample.component';
         ButtonModule,
         DropDownsModule,
         LayoutModule,
+        // BeDesignerModule
     ],
+    providers: [
+            begridEditService
+          ],
     bootstrap: [AppComponent]
 })
 export class AppModule {}

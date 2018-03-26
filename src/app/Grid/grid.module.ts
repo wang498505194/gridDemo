@@ -9,7 +9,7 @@ import { TreeViewModule } from '@progress/kendo-angular-treeview';
 import { InputsModule } from '@progress/kendo-angular-inputs';
 import { DateInputsModule } from '@progress/kendo-angular-dateinputs';
 import { ButtonModule, ButtonsModule, ButtonGroupModule } from '@progress/kendo-angular-buttons';
-import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
+import { DropDownsModule, DropDownListModule } from '@progress/kendo-angular-dropdowns';
 
 import { EditService } from './edit.service';
 import { InCellEditComponent } from './InCell-Edit/InCell-Edit.component';
@@ -30,7 +30,11 @@ import { GridRoutingModule } from './grid-routing.module';
 import { GridDemoComponent } from './grid.component';
 import { CommonModule } from '@angular/common';
 import { BuiltInEditComponent } from './built-in-edit/built-in-edit.component';
-
+import { CustomEditingInReactiveFormsComponent } from './custom-editing-in-reactive-forms/custom-editing-in-reactive-forms.component';
+import { ProductsService } from './custom-editing-in-reactive-forms/product.service';
+import { CustomItemTemplateDirective } from '../../../node_modules/_@progress_kendo-angular-dropdowns@1.6.1@@progress/kendo-angular-dropdowns/dist/es/templates/custom-item-template.directive';
+import { PopupModule } from '@progress/kendo-angular-popup';
+import { PopupAnchorDirective } from './custom-editing-in-reactive-forms/popup.anchor-target.directive';
 
 
 @NgModule({
@@ -45,32 +49,38 @@ import { BuiltInEditComponent } from './built-in-edit/built-in-edit.component';
         GridCardCardComponent,
         GridCardGridComponent,
         DetailTemplateComponent,
-        BuiltInEditComponent
+        BuiltInEditComponent,
+        CustomEditingInReactiveFormsComponent,
+        PopupAnchorDirective
     ],
     imports: [
         CommonModule,
         HttpClientModule,
         HttpClientJsonpModule,
 
-         FormsModule,
-         GridModule,
-         GridRoutingModule,
-         ButtonsModule,
-         ButtonGroupModule,
-         DialogModule ,
-         ReactiveFormsModule,
-         InputsModule,
+        FormsModule,
+        GridModule,
+        GridRoutingModule,
+        ButtonsModule,
+        ButtonGroupModule,
+        DialogModule,
+        ReactiveFormsModule,
+        InputsModule,
+        DropDownListModule,
+        PopupModule,
+        ReactiveFormsModule,
+
     ],
     providers: [
         {
             deps: [HttpClient],
             provide: EditService,
-            useFactory: (jsonp: HttpClient) => () => new EditService(jsonp)
+            useFactory: (httpClient: HttpClient) => () => new EditService(httpClient)
         },
         {
             deps: [HttpClient],
             provide: ExternalEditService,
-            useFactory: (jsonp: HttpClient) => () => new ExternalEditService(jsonp)
+            useFactory: (httpClient: HttpClient) => () => new ExternalEditService(httpClient)
         },
         // {
         //     deps: [HttpClient],
@@ -80,12 +90,13 @@ import { BuiltInEditComponent } from './built-in-edit/built-in-edit.component';
         {
             deps: [HttpClient],
             provide: HttpClientSourceService,
-            useFactory: (jsonp: HttpClient) => () => new HttpClientSourceService(jsonp)
+            useFactory: (httpClient: HttpClient) => () => new HttpClientSourceService(httpClient)
         },
         GridCardService,
-        InCellEditService
+        InCellEditService,
+        ProductsService
     ],
     // bootstrap: [AppComponent]
 })
-export class GridDemoModule {}
+export class GridDemoModule { }
 

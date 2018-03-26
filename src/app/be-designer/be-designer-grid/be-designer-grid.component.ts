@@ -7,19 +7,18 @@ import { GridDataResult } from '@progress/kendo-angular-grid';
 import { State, process } from '@progress/kendo-data-query';
 
 import { Product } from './model';
-import { InCellEditService } from './InCell-Edit.edit.service';
-//import { EditService } from '../edit.service';
 import { map } from 'rxjs/operators';
 import { CommonModule } from '@angular/common';
+import { begridEditService } from './be-designer-grid.edit.service';
 
 
 const dataItem_wjjOnly="这是wjj家dog";
 
 @Component({
-  selector:'Grid-InCell-Edit',
-  templateUrl:'./InCell-Edit.component.html',
+  selector:'be-Grid',
+  templateUrl:'./be-designer-grid.component.html',
 })
-export class InCellEditComponent implements OnInit {
+export class BEGridComponent implements OnInit {
 
     public view: Observable<GridDataResult>;
     public gridState: State = {
@@ -34,12 +33,13 @@ export class InCellEditComponent implements OnInit {
     private editedRowIndex: number;
     private editedProduct: Product;
 
-    constructor(private formBuilder: FormBuilder, public editService: InCellEditService) {
+    constructor(private formBuilder: FormBuilder, public editService: begridEditService) {
+        debugger;
     }
 
     public ngOnInit(): void {
          this.view = this.editService.pipe(map(data => process(data, this.gridState)));
-        
+        debugger;
         //this.view = this.editService.map(data => process(data, this.gridState));
         this.editService.read();
     }
