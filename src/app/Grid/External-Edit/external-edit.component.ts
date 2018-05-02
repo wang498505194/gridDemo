@@ -48,6 +48,7 @@ export class ExternalEditComponent implements OnInit {
     public editHandler({dataItem}) {
         this.editDataItem = dataItem;
         this.isNew = false;
+        debugger;
     }
 
     public cancelHandler() {

@@ -4,6 +4,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { DropDownComponent } from './drop-down/drop-down.component';
 import { DasSampleComponent } from './das-sample/das-sample.component';
 import { BEGridComponent } from './be-designer/be-designer-grid/be-designer-grid.component';
+import { PopUpDemoComponent } from './pop-up/pop-up.component';
+import { FormDemoComponent } from './form-demo-component/form-demo-component.component';
 
 
 const routes: Routes = [
@@ -12,6 +14,9 @@ const routes: Routes = [
   { path: 'Tree', loadChildren: './Tree/treeDemo.module#TreeDemoModule' },
   { path: 'LayOut', loadChildren: './LayOut/layout-demo.module#LayoutDemoModule' },
   { path: 'DropDown', component:DropDownComponent },
+  { path: 'Dialog', loadChildren: './dialog/dialog.module#DialogDemoModule' },
+  { path: 'PopUpDemo', component: PopUpDemoComponent },
+  { path: 'Form', component: FormDemoComponent },
 
   { path:'dasSample',component:DasSampleComponent},
   { path: 'BEDesigner', component:BEGridComponent },

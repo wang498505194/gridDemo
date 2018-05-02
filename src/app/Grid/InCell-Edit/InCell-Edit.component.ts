@@ -11,7 +11,7 @@ import { InCellEditService } from './InCell-Edit.edit.service';
 //import { EditService } from '../edit.service';
 import { map } from 'rxjs/operators';
 import { CommonModule } from '@angular/common';
-
+import { sampleProducts } from '../../../assets/productsClass';
 
 const dataItem_wjjOnly="这是wjj家dog";
 
@@ -22,6 +22,7 @@ const dataItem_wjjOnly="这是wjj家dog";
 export class InCellEditComponent implements OnInit {
 
     public view: Observable<GridDataResult>;
+    // public data:Array<Product>;
     public gridState: State = {
         sort: [],
         skip: 0,
@@ -38,9 +39,9 @@ export class InCellEditComponent implements OnInit {
     }
 
     public ngOnInit(): void {
-         this.view = this.editService.pipe(map(data => process(data, this.gridState)));
-        
-        //this.view = this.editService.map(data => process(data, this.gridState));
+        //  this.view = this.editService.pipe(map(data => process(data, this.gridState)));
+        // this.data=sampleProducts;
+        this.view = this.editService.map(data => process(data, this.gridState));
         this.editService.read();
     }
 
@@ -69,8 +70,10 @@ export class InCellEditComponent implements OnInit {
     }
 
     
-    public addHandler({ sender }) {
-        sender.addRow(this.createFormGroup(new Product()));
+    public addHandler({ sender,dataItem }) {
+        var fg=this.createFormGroup(new Product());
+        sender.addRow(fg);
+        
     }
 
     public cancelHandler({ sender, rowIndex }) {
@@ -80,14 +83,15 @@ export class InCellEditComponent implements OnInit {
     public saveHandler({ sender, formGroup, rowIndex }) {
         if (formGroup.valid) {
             this.editService.create(formGroup.value);
+            //this.data.push(formGroup.value);
             sender.closeRow(rowIndex);
         }
     }
 
-    public removeHandler({ sender, dataItem }) {
+    public removeHandler({ sender, dataItem,rowIndex }) {
         this.editService.remove(dataItem);
-
-        sender.cancelCell();
+        // this.data.splice(rowIndex,1);
+        // sender.cancelCell();
     }
 
     public saveChanges(grid: any): void {

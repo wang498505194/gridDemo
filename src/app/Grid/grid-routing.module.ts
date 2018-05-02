@@ -9,6 +9,10 @@ import { DetailTemplateComponent } from './DetailTemplateDirective/DetailTemplat
 import { GridDemoComponent } from './grid.component';
 import { BuiltInEditComponent } from './built-in-edit/built-in-edit.component';
 import { CustomEditingInReactiveFormsComponent } from './custom-editing-in-reactive-forms/custom-editing-in-reactive-forms.component';
+import { SelectionComponent } from './selection/selection.component';
+import { SelectionSelectAllComponent } from './selection-select-all/selection-select-all.component';
+import { SelectionPersistSelectionComponent } from './selection-persist-selection/selection-persist-selection.component';
+import { SelectionStoreByCustomKeyComponent } from './selection-store-by-custom-key/selection-store-by-custom-key.component';
 
 
 const routes: Routes = [
@@ -25,6 +29,10 @@ const routes: Routes = [
       { path: 'Grid_Card', component: GridCardComponent },
       { path: 'Detail_Template', component: DetailTemplateComponent },
       { path: 'Custom_Editing', component: CustomEditingInReactiveFormsComponent },
+      { path: 'Selection', component: SelectionComponent },
+      { path: 'Selection_SelectAll', component: SelectionSelectAllComponent },
+      { path: 'Selection_PersistSelection', component: SelectionPersistSelectionComponent },
+      { path: 'SelectionStoreByCustomKeyComponent', component: SelectionStoreByCustomKeyComponent },
       
       
     ]

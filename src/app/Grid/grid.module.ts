@@ -35,6 +35,10 @@ import { ProductsService } from './custom-editing-in-reactive-forms/product.serv
 import { CustomItemTemplateDirective } from '../../../node_modules/_@progress_kendo-angular-dropdowns@1.6.1@@progress/kendo-angular-dropdowns/dist/es/templates/custom-item-template.directive';
 import { PopupModule } from '@progress/kendo-angular-popup';
 import { PopupAnchorDirective } from './custom-editing-in-reactive-forms/popup.anchor-target.directive';
+import { SelectionComponent } from './selection/selection.component';
+import { SelectionSelectAllComponent } from './selection-select-all/selection-select-all.component';
+import { SelectionPersistSelectionComponent } from './selection-persist-selection/selection-persist-selection.component';
+import { SelectionStoreByCustomKeyComponent } from './selection-store-by-custom-key/selection-store-by-custom-key.component';
 
 
 @NgModule({
@@ -51,7 +55,11 @@ import { PopupAnchorDirective } from './custom-editing-in-reactive-forms/popup.a
         DetailTemplateComponent,
         BuiltInEditComponent,
         CustomEditingInReactiveFormsComponent,
-        PopupAnchorDirective
+        PopupAnchorDirective,
+        SelectionComponent,
+        SelectionSelectAllComponent,
+        SelectionPersistSelectionComponent,
+        SelectionStoreByCustomKeyComponent
     ],
     imports: [
         CommonModule,

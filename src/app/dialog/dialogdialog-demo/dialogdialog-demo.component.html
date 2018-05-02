@@ -1,0 +1,18 @@
+<div  #unbingDatumModal class="modal-dialog" class="example-wrapper">
+  <button kendoButton *ngIf="!opened" (click)="open()">Open dialog</button>
+  <kendo-dialog title="Please confirm" *ngIf="opened" (close)="close('cancel')" [minWidth]="250" [width]="450">
+    <kendo-dialog-titlebar>
+      <div style="font-size: 18px; line-height: 1.3em;">
+        <span class="k-icon k-i-print"></span> Print this page
+      </div>
+    </kendo-dialog-titlebar>  
+    <p style="margin: 30px; text-align: center;">Are you sure you want to continue?</p>
+      <kendo-dialog-actions>
+          <button kendoButton (click)="close('no')">No</button>
+          <button kendoButton (click)="close('yes')" primary="true">Yes</button>
+      </kendo-dialog-actions>
+  </kendo-dialog>
+</div>
+
+<button id='forShowSingleDatumBtnId' type="button"  data-toggle="modal" 
+data-target="#singleDatumId"style="visibility:hidden"></button>

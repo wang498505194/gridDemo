@@ -26,9 +26,11 @@ export class HttpClientSourceService extends BehaviorSubject<any[]> {
 
         this.fetch()
             .do(data => {
+                debugger;
                 this.data = data;
             })
             .subscribe(data => {
+                debugger;
                 super.next(data);
             });
     }
@@ -46,6 +48,7 @@ export class HttpClientSourceService extends BehaviorSubject<any[]> {
     }
 
     private fetch(): Observable<any[]> {
+        debugger;
         if (this.islocal) {
             return this.http.get('assets/Products.json').map(res => <any[]>res);
             //说明：
@@ -62,7 +65,10 @@ export class HttpClientSourceService extends BehaviorSubject<any[]> {
         else {
             return this.http
                 .jsonp(`https://demos.telerik.com/kendo-ui/service/Products/`, 'callback')
-                .map(res => <any[]>res);
+                .map(res =>{
+                    debugger;
+                    return <any[]>res;
+                });
         }
     }
 

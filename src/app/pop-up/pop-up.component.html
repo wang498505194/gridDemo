@@ -1,0 +1,9 @@
+<div class="example-config">
+  <button #button1 (click)="onToggle()" class="k-button">{{toggleText}} Popup</button>
+</div>
+<div class="example-wrapper">
+  <kendo-popup [popupClass]="'content popup'" [anchor]="button1" (anchorViewportLeave)="close()" *ngIf="show">
+      <!-- User-defined content -->
+          Popup content.
+  </kendo-popup>
+</div>
